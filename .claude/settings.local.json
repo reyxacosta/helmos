@@ -2,7 +2,20 @@
   "permissions": {
     "allow": [
       "PowerShell(node -v)",
-      "PowerShell(npm -v)"
+      "PowerShell(npm -v)",
+      "Bash(curl -s -b \"helmos-theme=light\" \"http://localhost:3000/personal/dashboard\")",
+      "Read(//tmp/**)",
+      "Bash(npm run *)",
+      "Bash(curl -s -b \"helmos-theme=dark\" \"http://localhost:3000/personal/dashboard\")",
+      "Bash(curl -s -b \"helmos-sidebar-collapsed=1\" \"http://localhost:3000/personal/dashboard\")",
+      "Bash(curl -s -b \"helmos-sidebar-collapsed=0\" \"http://localhost:3000/personal/dashboard\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/node_modules\" node \"C:\\\\Users\\\\REYACO~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Rey-Acosta-OneDrive---RCG-USA-Documents-helmos\\\\d768160e-c609-42a1-8696-d6a4035731f9\\\\scratchpad\\\\verify.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/node_modules\" node \"C:\\\\Users\\\\REYACO~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Rey-Acosta-OneDrive---RCG-USA-Documents-helmos\\\\d768160e-c609-42a1-8696-d6a4035731f9\\\\scratchpad\\\\debug-palette.js\")",
+      "Bash(NODE_PATH=\"$\\(pwd\\)/node_modules\" node \"C:\\\\Users\\\\REYACO~1\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--Users-Rey-Acosta-OneDrive---RCG-USA-Documents-helmos\\\\d768160e-c609-42a1-8696-d6a4035731f9\\\\scratchpad\\\\debug-expand.js\")",
+      "Bash(tail -15 /tmp/helmos-prod.log)",
+      "Bash(tasklist //FI \"IMAGENAME eq node.exe\")",
+      "Bash(taskkill //PID 30316 //F)",
+      "Bash(npm uninstall *)"
     ]
   }
 }
