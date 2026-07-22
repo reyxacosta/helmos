@@ -14,8 +14,19 @@ const PUBLIC_PATHS = ["/", "/sign-in", "/sign-up", "/forgot-password", "/reset-p
 // always run its own logic regardless of auth state).
 const AUTH_ONLY_PATHS = ["/sign-in", "/sign-up", "/forgot-password"];
 
+// Next's generated metadata routes (icon.svg, apple-icon.tsx, etc.) are
+// served at an extensionless path like "/apple-icon", so they don't match
+// proxy.ts's file-extension-based matcher exclusions and fall through to
+// here. They must always be public — browsers/OS fetch them with no
+// session context, on every page including the public ones.
+const METADATA_ROUTE_PATTERN = /^\/(icon|apple-icon|opengraph-image|twitter-image)\d*$/;
+
 function isPublicRoute(pathname: string) {
-  return PUBLIC_PATHS.includes(pathname) || pathname.startsWith("/auth/");
+  return (
+    PUBLIC_PATHS.includes(pathname) ||
+    pathname.startsWith("/auth/") ||
+    METADATA_ROUTE_PATTERN.test(pathname)
+  );
 }
 
 /**

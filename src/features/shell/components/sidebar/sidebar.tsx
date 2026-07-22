@@ -4,6 +4,7 @@ import * as React from "react";
 
 import { cn } from "@/lib/cn";
 import { useSidebar } from "@/features/shell/providers/sidebar-provider";
+import { HelmMark } from "@/components/brand/helm-mark";
 import { WorkspaceSwitcher } from "@/features/shell/components/workspace-switcher/workspace-switcher";
 import { SidebarNav } from "@/features/shell/components/sidebar/sidebar-nav";
 import { SidebarCollapseToggle } from "@/features/shell/components/sidebar/sidebar-collapse-toggle";
@@ -91,7 +92,11 @@ export function Sidebar() {
 
         <SidebarNav />
 
-        <div className="flex justify-end border-t border-sidebar-border p-2">
+        <div className="flex items-center justify-between border-t border-sidebar-border p-2">
+          <HelmMark
+            size={16}
+            className={cn("ml-1 text-sidebar-foreground/40", collapsed && "md:hidden")}
+          />
           <SidebarCollapseToggle />
         </div>
       </aside>

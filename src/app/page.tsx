@@ -5,8 +5,10 @@ import { getUser } from "@/server/auth/dal";
 import { getPostAuthRedirectPath } from "@/server/auth/get-post-auth-redirect";
 import { WelcomeHeader } from "@/features/welcome/components/welcome-header";
 import { Hero } from "@/features/welcome/components/hero";
+import { ProductPreview } from "@/features/welcome/components/product-preview";
 import { WorkspacePreview } from "@/features/welcome/components/workspace-preview";
-import { ValuePillars } from "@/features/welcome/components/value-pillars";
+import { PrivacySection } from "@/features/welcome/components/privacy-section";
+import { FutureAiSection } from "@/features/welcome/components/future-ai-section";
 import { WelcomeFooter } from "@/features/welcome/components/welcome-footer";
 
 export const metadata: Metadata = {
@@ -24,8 +26,10 @@ export default async function RootPage() {
       <WelcomeHeader />
       <main className="flex-1">
         <Hero />
+        <ProductPreview />
         <WorkspacePreview />
-        <ValuePillars />
+        <PrivacySection />
+        <FutureAiSection />
       </main>
       <WelcomeFooter />
     </div>

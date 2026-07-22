@@ -1,24 +1,25 @@
-import { Navigation } from "lucide-react";
-
+import { HelmMark } from "@/components/brand/helm-mark";
 import { cn } from "@/lib/cn";
 
 /**
- * The one HelmOS brand mark, reused by the welcome page and the auth shell.
- * Deliberately restrained: the same rounded-badge language already used for
- * workspace icons throughout the app, not a ship's-wheel/anchor illustration.
+ * The lockup (mark + wordmark) used throughout the app — welcome header,
+ * footer, auth shell. The mark itself is reserved for this brand usage;
+ * it's deliberately not the same rounded-square badge used for workspace/
+ * feature icons elsewhere, so it stays visually distinct as *the* logo.
+ * See /brand/LOGO_USAGE.md.
  */
 export function BrandMark({
   showWordmark = true,
+  size = 28,
   className,
 }: {
   showWordmark?: boolean;
+  size?: number;
   className?: string;
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2", className)}>
-      <span className="flex size-8 shrink-0 items-center justify-center rounded-lg bg-primary text-primary-foreground">
-        <Navigation className="size-4" strokeWidth={2.25} />
-      </span>
+      <HelmMark size={size} className="text-primary" />
       {showWordmark && (
         <span className="text-base font-semibold tracking-tight text-foreground">
           HelmOS
