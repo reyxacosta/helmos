@@ -17,3 +17,9 @@ export interface WorkspaceConfig {
   icon: LucideIcon;
   sections: SectionConfig[];
 }
+
+/** Just enough to display in the header — not the full profile row. */
+export interface CurrentUserSummary {
+  email?: string;
+  fullName: string | null;
+}

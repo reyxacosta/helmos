@@ -16,12 +16,14 @@
 
 ```
 src/
-  app/          # App Router — routing only (pages, layouts, route handlers, proxy.ts)
+  app/          # App Router — routing only (pages, layouts, route handlers)
+  proxy.ts      # session refresh + route guard (project root would also work, but
+                # lives beside app/ since app/ is under src/ — see Next's proxy.ts docs)
   components/   # Shared presentational UI components (ui/ = design-system primitives)
-  features/     # Self-contained domain modules, added as each feature ships
-  server/       # Server-only code: db/, actions/, services/ — never imported by Client Components
-  lib/          # Framework-agnostic utilities
-  config/       # Typed app configuration & env validation
+  features/     # Self-contained domain modules: shell/, auth/, welcome/, ...
+  server/       # Server-only code: auth/ (DAL), db/, actions/, services/ — never imported by Client Components
+  lib/          # Framework-agnostic utilities, incl. lib/supabase/ (browser + server clients)
+  config/       # Typed app configuration & env validation (config/env.ts)
   types/        # Shared TypeScript types
   styles/       # Design tokens / theme
 ```
@@ -31,7 +33,16 @@ Each folder has a `README.md` explaining what belongs in it — check it before 
 ## Conventions
 
 - Path alias `@/*` resolves to `src/*` (see `tsconfig.json`).
-- Env vars: only variables prefixed `NEXT_PUBLIC_` are exposed to the browser; everything else is server-only. `.env.example` is the source of truth for what variables exist — add to it whenever you add a new variable.
+- Env vars: only variables prefixed `NEXT_PUBLIC_` are exposed to the browser; everything else is server-only. `.env.example` is the source of truth for what variables exist — add to it whenever you add a new variable. Read them through `@/config/env`, never `process.env` directly, so a missing var fails fast at startup.
 - Node.js 20.9+ is required (Next.js 16 minimum).
 - Scripts: `npm run dev` / `npm run build` / `npm run start` / `npm run lint`.
+
+## Auth & Supabase
+
+- Session verification server-side always goes through `supabase.auth.getClaims()` — never `getSession()` (not guaranteed to revalidate) and never `getUser()` (slower, no local JWT verification). See `src/server/auth/dal.ts`.
+- Route protection is two layers: `src/proxy.ts` → `src/lib/supabase/update-session.ts` (optimistic, every request) and `(app)/layout.tsx`'s `requireUser()` (authoritative). Don't rely on proxy alone for anything sensitive.
+- Cookie handling in `@supabase/ssr` is `getAll`/`setAll` only — the `get`/`set`/`remove` trio is deprecated and will be removed upstream. Don't reintroduce it.
+- `src/lib/supabase/client.ts` is browser-only, `src/lib/supabase/server.ts` is server-only (creates a **new** client per request — never cache/share one). Never import `server.ts` from a Client Component.
+- The service-role/secret key is not used anywhere in this project yet. If a future feature needs it (e.g. admin-only operations), it's server-only and must never get a `NEXT_PUBLIC_` prefix.
+- `getPostAuthRedirectPath()` (`src/server/auth/get-post-auth-redirect.ts`) is the one seam for "where does a signed-in user go" — route new logic through it rather than hardcoding redirect targets elsewhere.
 

@@ -10,8 +10,9 @@ import { MobileNavToggle } from "@/features/shell/components/header/mobile-nav-t
 import { CommandPaletteTrigger } from "@/features/shell/components/header/command-palette-trigger";
 import { NotificationsTrigger } from "@/features/shell/components/header/notifications-trigger";
 import { UserProfileMenu } from "@/features/shell/components/header/user-profile-menu";
+import type { CurrentUserSummary } from "@/features/shell/types";
 
-export function Header() {
+export function Header({ user }: { user: CurrentUserSummary }) {
   const workspace = useWorkspace();
   const pathname = usePathname();
   const { setOpen: setCommandPaletteOpen } = useCommandPalette();
@@ -43,7 +44,7 @@ export function Header() {
           <Search className="size-4" />
         </IconButton>
         <NotificationsTrigger />
-        <UserProfileMenu />
+        <UserProfileMenu user={user} />
       </div>
     </header>
   );

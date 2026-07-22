@@ -12,11 +12,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useTheme } from "@/features/shell/providers/theme-provider";
+import { signOut } from "@/features/auth/actions/sign-out";
+import type { CurrentUserSummary } from "@/features/shell/types";
 
-const PLACEHOLDER_NAME = "HelmOS User";
-
-export function UserProfileMenu() {
+export function UserProfileMenu({ user }: { user: CurrentUserSummary }) {
   const { theme, toggleTheme } = useTheme();
+  const displayName = user.fullName || user.email || "HelmOS User";
 
   return (
     <DropdownMenu>
@@ -25,11 +26,18 @@ export function UserProfileMenu() {
           aria-label="User menu"
           className="rounded-full opacity-90 transition-opacity hover:opacity-100"
         >
-          <Avatar name={PLACEHOLDER_NAME} />
+          <Avatar name={displayName} />
         </button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-56">
-        <DropdownMenuLabel>{PLACEHOLDER_NAME}</DropdownMenuLabel>
+        <DropdownMenuLabel className="flex flex-col gap-0.5">
+          <span className="truncate font-medium text-foreground">{displayName}</span>
+          {user.fullName && user.email && (
+            <span className="truncate text-xs font-normal text-muted-foreground">
+              {user.email}
+            </span>
+          )}
+        </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem disabled>
           <User className="size-4" />
@@ -48,7 +56,7 @@ export function UserProfileMenu() {
           {theme === "dark" ? "Light mode" : "Dark mode"}
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem disabled>
+        <DropdownMenuItem onSelect={() => signOut()}>
           <LogOut className="size-4" />
           Log out
         </DropdownMenuItem>

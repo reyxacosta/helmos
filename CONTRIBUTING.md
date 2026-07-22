@@ -28,11 +28,12 @@ The dev server runs on Turbopack by default (no flag needed) at `http://localhos
 
 ```
 src/
-  app/          # App Router — routing only (pages, layouts, route handlers, proxy.ts)
+  app/          # App Router — routing only (pages, layouts, route handlers)
+  proxy.ts      # session refresh + route guard
   components/   # Shared presentational UI components (ui/ = design-system primitives)
-  features/     # Self-contained domain modules, added as each feature ships
-  server/       # Server-only code: db/, actions/, services/ — never imported by Client Components
-  lib/          # Framework-agnostic utilities
+  features/     # Self-contained domain modules: shell/, auth/, welcome/, ...
+  server/       # Server-only code: auth/ (DAL), db/, actions/, services/ — never imported by Client Components
+  lib/          # Framework-agnostic utilities, incl. lib/supabase/
   config/       # Typed app configuration & env validation
   types/        # Shared TypeScript types
   styles/       # Design tokens / theme
