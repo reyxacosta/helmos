@@ -36,7 +36,7 @@ export default async function RootLayout({
       lang="en"
       data-theme={theme}
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased`}
     >
       <body className="min-h-full">
         <a href="#main-content" className="skip-link">

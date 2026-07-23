@@ -8,7 +8,7 @@ import { Reveal } from "@/components/ui/reveal";
  */
 export function WorkspacePreview() {
   return (
-    <section className="border-t border-border px-6 py-20 sm:px-10">
+    <section id="features" className="px-6 py-24 sm:px-10">
       <div className="mx-auto max-w-4xl">
         <div className="mb-8 text-center">
           <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
@@ -24,7 +24,7 @@ export function WorkspacePreview() {
             const isShared = workspace.id === "family-business";
             return (
               <Reveal key={workspace.id} delay={index * 60}>
-                <div className="flex h-full flex-col gap-3 rounded-xl border border-border bg-card p-5 text-left shadow-sm">
+                <div className="flex h-full flex-col gap-3 rounded-xl border border-border bg-card p-5 text-left shadow-sm transition-[transform,box-shadow] duration-300 hover:-translate-y-1 hover:shadow-lg">
                   <span className="flex size-9 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                     <Icon className="size-4" />
                   </span>

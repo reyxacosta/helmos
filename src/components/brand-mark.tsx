@@ -3,10 +3,9 @@ import { cn } from "@/lib/cn";
 
 /**
  * The lockup (mark + wordmark) used throughout the app — welcome header,
- * footer, auth shell. The mark itself is reserved for this brand usage;
- * it's deliberately not the same rounded-square badge used for workspace/
- * feature icons elsewhere, so it stays visually distinct as *the* logo.
- * See /brand/LOGO_USAGE.md.
+ * footer, auth shell, sidebar. "Helm" is light-weight `currentColor` (theme-
+ * adaptive); "OS" is bold with a fixed violet-to-blue gradient, matching the
+ * official artwork. See /brand/LOGO_USAGE.md.
  */
 export function BrandMark({
   showWordmark = true,
@@ -21,8 +20,11 @@ export function BrandMark({
     <span className={cn("inline-flex items-center gap-2", className)}>
       <HelmMark size={size} className="text-primary" />
       {showWordmark && (
-        <span className="text-base font-semibold tracking-tight text-foreground">
-          HelmOS
+        <span className="text-base tracking-tight">
+          <span className="font-light text-foreground">Helm</span>
+          <span className="bg-gradient-to-r from-primary to-info bg-clip-text font-bold text-transparent">
+            OS
+          </span>
         </span>
       )}
     </span>

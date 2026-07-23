@@ -1,14 +1,10 @@
 /**
- * The permanent HelmOS mark: a pointy-top hexagon frame (stability,
- * structure, engineering) with a single compass needle pivoting toward
- * the top vertex (direction, precision, focus). No gradients or shadows
- * baked in — flat stroke + one solid fill so it stays crisp from a 16px
- * favicon up to a large hero lockup. Uses `currentColor` throughout so it
- * inherits text color (set `text-primary`, `text-foreground`, etc. on an
- * ancestor, or pass a fixed color where it's rendered outside app CSS).
- *
- * See /brand/LOGO_USAGE.md before changing this file — the shape itself
- * is a fixed brand decision, not a component to redesign per-use.
+ * The official HelmOS mark: a hexagon frame with an "H" monogram, both
+ * rendered as matching-weight strokes. This is a locked brand asset — see
+ * /brand/LOGO_USAGE.md before changing this file. Uses `currentColor` so
+ * it adapts correctly to both themes (the reference artwork was produced
+ * for a dark surface; the pale stroke it uses there would be invisible in
+ * light mode without this).
  */
 export function HelmMark({
   size = 24,
@@ -33,7 +29,12 @@ export function HelmMark({
         strokeWidth="2.2"
         strokeLinejoin="round"
       />
-      <path d="M16 7L18.8 15.5L16 19L13.2 15.5L16 7Z" fill="currentColor" />
+      <path
+        d="M12 11V21M20 11V21M12 16H20"
+        stroke="currentColor"
+        strokeWidth="2.2"
+        strokeLinecap="round"
+      />
     </svg>
   );
 }

@@ -7,6 +7,12 @@ import { BrandMark } from "@/components/brand-mark";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/cn";
 
+const NAV_LINKS = [
+  { href: "#about", label: "About" },
+  { href: "#features", label: "Features" },
+  { href: "#privacy", label: "Privacy" },
+];
+
 export function WelcomeHeader() {
   const [scrolled, setScrolled] = React.useState(false);
 
@@ -29,8 +35,27 @@ export function WelcomeHeader() {
       <Link href="/" aria-label="HelmOS home">
         <BrandMark />
       </Link>
-      <Link href="/sign-in" className={cn(buttonVariants({ variant: "ghost", size: "sm" }))}>
-        Sign in
+
+      <nav className="hidden items-center gap-8 md:flex" aria-label="Primary">
+        {NAV_LINKS.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+          >
+            {link.label}
+          </a>
+        ))}
+      </nav>
+
+      <Link
+        href="/sign-up"
+        className={cn(
+          buttonVariants({ size: "sm" }),
+          "shadow-[0_0_0_0_transparent] transition-shadow hover:shadow-[0_0_28px_-6px_var(--primary)]"
+        )}
+      >
+        Get Started
       </Link>
     </header>
   );

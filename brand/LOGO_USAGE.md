@@ -2,14 +2,16 @@
 
 ## The mark
 
-A pointy-top hexagon frame with a single needle pivoting toward the top vertex. Stroke + one solid fill, no gradients, no bevels, no drop shadow baked into the artwork itself.
+**This is the official, locked HelmOS logo**, supplied as reference artwork and reproduced here as SVG/CSS rather than a rasterized image. A hexagon frame with an "H" monogram inside — both rendered as matching-weight strokes — paired with a wordmark where "Helm" is a light weight and "OS" is bold with a fixed violet-to-blue gradient.
 
-- **Hexagon** — stability, structure, engineering. Chosen over a filled badge shape specifically so it reads as *the logo*, not another icon badge (see "What the mark is not," below).
-- **Needle** — precision, direction, focus. A stand-in for "helm/navigation" without a literal ship's wheel or compass rose.
+- **Hexagon + H** — stability, structure, engineering, and a literal initial, all at once. Chosen over a filled badge shape specifically so it reads as *the logo*, not another icon badge (see "What the mark is not," below).
+- **"Helm" / "OS"** — the weight contrast (light vs. bold) plus the fixed gradient on "OS" is part of the locked artwork; don't unify the two into a single weight or color.
 
 This shape is a **permanent brand decision**, not a component to redesign per-use. If a surface seems to need a different logo treatment, the answer is almost always "use it smaller / with more clear space / in the mono variant" — not "draw a new version."
 
-Source of truth: `src/components/brand/helm-mark.tsx` (the React component every in-app usage renders from) and `public/brand/helmos-mark*.svg` (static exports for anything outside the app — docs, decks, social).
+**One documented adaptation**: the reference artwork was produced for display on a dark surface (the hexagon/H/"Helm" are pale strokes, invisible against a white canvas). Since HelmOS supports both dark and light theme, the icon and "Helm" render on `currentColor` so they stay legible in both — this is a standard, necessary technical adaptation for a two-theme product, not a redesign. "OS" keeps its fixed gradient in both themes, exactly as supplied.
+
+Source of truth: `src/components/brand/helm-mark.tsx` (icon only) and `src/components/brand-mark.tsx` (icon + wordmark lockup) — the React components every in-app usage renders from — plus `public/brand/helmos-mark*.svg` (static icon-only exports for anything outside the app — docs, decks, social).
 
 ## What the mark is not
 
