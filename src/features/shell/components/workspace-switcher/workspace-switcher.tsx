@@ -29,7 +29,7 @@ export function WorkspaceSwitcher() {
       <button
         aria-label={collapsed ? `Switch workspace (currently ${current.label})` : undefined}
         className={cn(
-          "flex w-full items-center gap-2 rounded-md px-3 py-2 text-left text-sm font-semibold text-sidebar-foreground transition-colors hover:bg-accent hover:text-accent-foreground",
+          "flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm font-semibold text-sidebar-foreground transition-[background-color,color] duration-150 hover:bg-accent hover:text-accent-foreground",
           // `collapsed` is desktop-only (icon rail); the mobile drawer
           // always shows the full label + chevron regardless of it.
           collapsed && "md:w-auto md:justify-center md:px-0"
@@ -70,7 +70,7 @@ export function WorkspaceSwitcher() {
           return (
             <DropdownMenuItem key={workspace.id} asChild>
               <Link
-                href={`/${workspace.id}/dashboard`}
+                href={`/${workspace.id}/home`}
                 className={cn(active && "bg-accent text-accent-foreground")}
               >
                 <span className="flex size-6 shrink-0 items-center justify-center rounded-md bg-primary text-primary-foreground">

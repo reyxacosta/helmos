@@ -6,10 +6,10 @@ import "server-only";
  * the root `page.tsx` all call this instead of hardcoding a path.
  *
  * Today workspace membership doesn't exist yet, so everyone lands on the
- * Personal dashboard. Sprint 3 replaces the body with a real lookup — last
+ * Personal home. A future sprint replaces the body with a real lookup — last
  * used workspace, or a workspace-selection screen if the user belongs to
  * more than one — without touching any of its callers.
  */
 export async function getPostAuthRedirectPath(): Promise<string> {
-  return "/personal/dashboard";
+  return "/personal/home";
 }

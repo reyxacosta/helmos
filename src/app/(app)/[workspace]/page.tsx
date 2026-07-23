@@ -6,5 +6,5 @@ export default async function WorkspaceIndexPage({
   params: Promise<{ workspace: string }>;
 }) {
   const { workspace } = await params;
-  redirect(`/${workspace}/dashboard`);
+  redirect(`/${workspace}/home`);
 }

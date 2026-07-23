@@ -84,7 +84,7 @@ export function Sidebar() {
           collapsed && "md:w-[72px]"
         )}
       >
-        <div className="flex items-center gap-2 px-2 pt-2">
+        <div className="flex items-center gap-2 px-2 pt-3 pb-1">
           <div className="min-w-0 flex-1">
             <WorkspaceSwitcher />
           </div>
@@ -92,7 +92,7 @@ export function Sidebar() {
 
         <SidebarNav />
 
-        <div className="flex items-center justify-between border-t border-sidebar-border p-2">
+        <div className="flex items-center justify-between border-t border-sidebar-border p-2.5">
           <HelmMark
             size={16}
             className={cn("ml-1 text-sidebar-foreground/40", collapsed && "md:hidden")}

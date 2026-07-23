@@ -33,7 +33,7 @@ function NavLinkContent({
       {active && (
         <span
           aria-hidden="true"
-          className="absolute inset-y-1.5 left-0 w-0.5 rounded-full bg-primary"
+          className="absolute inset-y-1.5 left-0 w-0.5 rounded-full bg-primary shadow-[0_0_8px_var(--primary)]"
         />
       )}
       <Icon
@@ -75,7 +75,7 @@ export function SidebarNavItem({
     <Link
       href={href}
       className={cn(
-        "relative flex items-center gap-3 rounded-md px-3 py-2 text-sm transition-colors",
+        "relative flex items-center gap-3 rounded-md px-3 py-2.5 text-sm transition-[background-color,color] duration-150",
         collapsed && "md:justify-center md:px-0",
         active
           ? "bg-accent font-semibold text-foreground"

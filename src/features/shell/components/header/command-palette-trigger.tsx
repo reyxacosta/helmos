@@ -10,7 +10,7 @@ export function CommandPaletteTrigger() {
   return (
     <button
       onClick={() => setOpen(true)}
-      className="flex h-8 w-full max-w-xs items-center gap-2 rounded-md border border-border bg-muted/50 px-2.5 text-sm text-muted-foreground transition-colors hover:bg-muted"
+      className="flex h-8 w-full max-w-xs items-center gap-2 rounded-md border border-border bg-muted/50 px-2.5 text-sm text-muted-foreground transition-[background-color,box-shadow] duration-200 hover:bg-muted hover:shadow-[0_0_0_1px_var(--border),0_0_16px_-8px_var(--primary)]"
     >
       <Search className="size-3.5 shrink-0" />
       <span className="flex-1 truncate text-left">Search...</span>

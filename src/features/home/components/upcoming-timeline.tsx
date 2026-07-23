@@ -1,0 +1,27 @@
+import { UPCOMING_EVENTS } from "@/features/home/config/placeholder-content";
+
+export function UpcomingTimeline() {
+  return (
+    <section
+      aria-labelledby="upcoming-heading"
+      className="flex h-full flex-col gap-4 rounded-xl border border-border bg-card p-6"
+    >
+      <h3 id="upcoming-heading" className="text-sm font-semibold text-foreground">
+        Upcoming
+      </h3>
+      <ul className="flex flex-col gap-4">
+        {UPCOMING_EVENTS.map(({ id, label, when, icon: Icon }) => (
+          <li key={id} className="flex items-center gap-3">
+            <span className="flex size-8 shrink-0 items-center justify-center rounded-md border border-border bg-background text-muted-foreground">
+              <Icon className="size-3.5" aria-hidden="true" />
+            </span>
+            <div className="min-w-0">
+              <p className="truncate text-sm text-foreground/90">{label}</p>
+              <p className="text-xs text-muted-foreground">{when}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}

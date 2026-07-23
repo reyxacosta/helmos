@@ -13,7 +13,7 @@ import {
   GraduationCap,
   Hammer,
   HeartPulse,
-  LayoutDashboard,
+  Home,
   NotebookPen,
   Percent,
   Plane,
@@ -41,7 +41,7 @@ export const workspaces: WorkspaceConfig[] = [
     label: "Personal",
     icon: User,
     sections: [
-      { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { id: "home", label: "Home", icon: Home },
       { id: "finance", label: "Finance", icon: Wallet },
       { id: "travel", label: "Travel", icon: Plane },
       { id: "vehicles", label: "Vehicles", icon: Car },
@@ -56,7 +56,7 @@ export const workspaces: WorkspaceConfig[] = [
     label: "Work",
     icon: Briefcase,
     sections: [
-      { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { id: "home", label: "Home", icon: Home },
       { id: "marine-logbook", label: "Marine Logbook", icon: Anchor },
       { id: "projects", label: "Projects", icon: FolderKanban },
       { id: "reports", label: "Reports", icon: BarChart3 },
@@ -71,7 +71,7 @@ export const workspaces: WorkspaceConfig[] = [
     label: "University",
     icon: GraduationCap,
     sections: [
-      { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { id: "home", label: "Home", icon: Home },
       { id: "degree-planner", label: "Degree Planner", icon: GraduationCap },
       { id: "assignments", label: "Assignments", icon: ClipboardList },
       { id: "notes", label: "Notes", icon: NotebookPen },
@@ -84,7 +84,7 @@ export const workspaces: WorkspaceConfig[] = [
     label: "Family Business",
     icon: Building2,
     sections: [
-      { id: "dashboard", label: "Dashboard", icon: LayoutDashboard },
+      { id: "home", label: "Home", icon: Home },
       { id: "customers", label: "Customers", icon: Users },
       { id: "vehicles", label: "Vehicles", icon: Car },
       { id: "estimates", label: "Estimates", icon: FileSpreadsheet },

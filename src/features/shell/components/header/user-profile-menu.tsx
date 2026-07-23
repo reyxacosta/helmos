@@ -24,7 +24,7 @@ export function UserProfileMenu({ user }: { user: CurrentUserSummary }) {
       <DropdownMenuTrigger asChild>
         <button
           aria-label="User menu"
-          className="rounded-full opacity-90 transition-opacity hover:opacity-100"
+          className="rounded-full opacity-90 ring-primary/40 transition-[opacity,box-shadow] duration-150 hover:opacity-100 hover:ring-2"
         >
           <Avatar name={displayName} />
         </button>

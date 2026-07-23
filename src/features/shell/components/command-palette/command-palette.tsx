@@ -1,7 +1,15 @@
 "use client";
 
 import * as React from "react";
-import { FileText, LayoutDashboard, Search, Settings } from "lucide-react";
+import {
+  Blocks,
+  FileText,
+  LayoutGrid,
+  ListTodo,
+  NotebookPen,
+  Search,
+  Users,
+} from "lucide-react";
 
 import {
   Dialog,
@@ -12,9 +20,12 @@ import {
 import { useCommandPalette } from "@/features/shell/providers/command-palette-provider";
 
 const EXAMPLE_ITEMS = [
-  { icon: LayoutDashboard, label: "Go to Dashboard" },
-  { icon: FileText, label: "Go to Documents" },
-  { icon: Settings, label: "Go to Settings" },
+  { icon: NotebookPen, label: "Search notes" },
+  { icon: ListTodo, label: "Search tasks" },
+  { icon: FileText, label: "Search documents" },
+  { icon: Users, label: "Search people" },
+  { icon: LayoutGrid, label: "Switch workspace" },
+  { icon: Blocks, label: "Browse modules" },
 ];
 
 export function CommandPalette() {
@@ -58,7 +69,9 @@ export function CommandPalette() {
               key={label}
               className="flex cursor-not-allowed items-center gap-2.5 rounded-md px-2.5 py-2 text-sm text-muted-foreground/60"
             >
-              <Icon className="size-4 shrink-0" />
+              <span className="flex size-6 shrink-0 items-center justify-center rounded-md border border-border bg-card">
+                <Icon className="size-3.5" />
+              </span>
               {label}
             </div>
           ))}
